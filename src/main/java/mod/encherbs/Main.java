@@ -8,7 +8,6 @@ import mod.encherbs.init.ModTiles;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.item.BlockItem;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -68,15 +67,10 @@ public class Main
                     }
                 });
 
-        ModItems.ITEMS.getEntries().stream()
-                .map(RegistryObject::get)
-                .forEach(item -> Minecraft.getInstance().getItemColors().register((stack, index) -> {
-                    if (stack.getItem() instanceof BlockItem) {
-                        BlockPlant blockPlant = ((BlockPlant) ((BlockItem) stack.getItem()).getBlock());
-                        int[] cropColor = blockPlant.getCropColor();
-                        return Util.getIntFromColor(cropColor[0], cropColor[1], cropColor[2]);
-                    }
-                    return 0;
+        ModEvents.getSeeds()
+                .forEach(item -> Minecraft.getInstance().getItemColors().register((itemStack, tintColor) -> {
+                    int[] cropColor = ((BlockPlant) item.getBlock()).getCropColor();
+                    return Util.getIntFromColor(cropColor[0], cropColor[1], cropColor[2]);
                 }, item));
     }
 

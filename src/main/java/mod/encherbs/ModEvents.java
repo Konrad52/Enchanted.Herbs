@@ -12,11 +12,14 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 @SuppressWarnings("unused")
 @Mod.EventBusSubscriber(modid = Main.MODID, bus=Mod.EventBusSubscriber.Bus.MOD)
 public class ModEvents {
+
+    private static ArrayList<BlockItemSeed> seeds = new ArrayList<>();
 
     @SuppressWarnings("unused")
     @SubscribeEvent
@@ -30,12 +33,15 @@ public class ModEvents {
                         final Item.Properties properties = new Item.Properties().group(ModItemGroups.MOD_ITEM_GROUP);
                         final BlockItem blockItem;
 
-                        if (isItemSeed(block))
+                        if (isItemSeed(block)) {
                             blockItem = new BlockItemSeed(block, properties);
-                        else
+                            blockItem.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
+                            seeds.add((BlockItemSeed) blockItem);
+                        } else {
                             blockItem = new BlockItem(block, properties);
+                            blockItem.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
+                        }
 
-                        blockItem.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
                         registry.register(blockItem);
                     }
                 });
@@ -51,6 +57,10 @@ public class ModEvents {
     public static boolean isItemSeed(Block block) {
         return !ModBlocks.MAGICAL_FARMLAND.get() .equals(block)
             && !ModBlocks.MAGICAL_DIRT.get()     .equals(block);
+    }
+
+    public static ArrayList<BlockItemSeed> getSeeds() {
+        return seeds;
     }
 
 }
