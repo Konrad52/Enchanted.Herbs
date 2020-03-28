@@ -2,12 +2,12 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "test_plant",
+      "name": "diamond_plant",
       "rolls": 1,
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "encherbs:test_plant"
+          "name": "encherbs:diamond_plant"
         }
       ],
       "conditions": [
