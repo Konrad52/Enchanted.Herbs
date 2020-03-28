@@ -76,12 +76,12 @@ public class BlockPlant extends Block {
             if (worldIn.isRemote)
                 for (int i = 0; i < 20; i++) {
                     worldIn.addParticle(ModParticles.MAGICAL_FERTILIZER_PARTICLE.get(),
-                            pos.getX() + (worldIn.rand.nextDouble() * 0.70f) + 0.15f,
-                            pos.getY() + (worldIn.rand.nextDouble() * 0.70f) + 0.05f,
-                            pos.getZ() + (worldIn.rand.nextDouble() * 0.70f) + 0.15f,
-                            0,
-                            0,
-                            0);
+                            pos.getX() + (worldIn.rand.nextDouble() * 0.6f) + 0.2f,
+                            pos.getY() + (worldIn.rand.nextDouble() * 0.6f) + 0.1f,
+                            pos.getZ() + (worldIn.rand.nextDouble() * 0.6f) + 0.2f,
+                            cropColor[0],
+                            cropColor[1],
+                            cropColor[2]);
                 }
 
             worldIn.playSound(player, pos, SoundType.PLANT.getPlaceSound(), SoundCategory.BLOCKS, 0.6f, worldIn.rand.nextFloat() * 0.1F + 0.9F);

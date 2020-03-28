@@ -1,3 +1,10 @@
 {
-
+  "textures": [
+    "encherbs:magical_fertilizer_particle_01",
+    "encherbs:magical_fertilizer_particle_02",
+    "encherbs:magical_fertilizer_particle_03",
+    "encherbs:magical_fertilizer_particle_04",
+    "encherbs:magical_fertilizer_particle_05",
+    "encherbs:magical_fertilizer_particle_06"
+  ]
 }

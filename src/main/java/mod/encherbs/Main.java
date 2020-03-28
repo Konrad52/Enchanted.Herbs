@@ -1,7 +1,7 @@
 package mod.encherbs;
 
 import mod.encherbs.classes.BlockPlant;
-import mod.encherbs.classes.CustomParticleFactory;
+import mod.encherbs.classes.particles.MagicalFertilizerParticle;
 import mod.encherbs.classes.util.Util;
 import mod.encherbs.init.ModBlocks;
 import mod.encherbs.init.ModItems;
@@ -76,7 +76,7 @@ public class Main
                     return Util.getIntFromColor(cropColor[0], cropColor[1], cropColor[2]);
                 }, item));
 
-        Minecraft.getInstance().particles.registerFactory(ModParticles.MAGICAL_FERTILIZER_PARTICLE.get(), new CustomParticleFactory());
+        Minecraft.getInstance().particles.registerFactory(ModParticles.MAGICAL_FERTILIZER_PARTICLE.get(), MagicalFertilizerParticle.Factory::new);
     }
 
     @SuppressWarnings("unused")
@@ -84,4 +84,5 @@ public class Main
     public void onServerStarting(FMLServerStartingEvent event) {
         LOGGER.info("Server initialization.");
     }
+
 }
