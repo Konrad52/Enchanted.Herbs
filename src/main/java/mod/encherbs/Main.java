@@ -1,9 +1,11 @@
 package mod.encherbs;
 
 import mod.encherbs.classes.BlockPlant;
+import mod.encherbs.classes.CustomParticleFactory;
 import mod.encherbs.classes.util.Util;
 import mod.encherbs.init.ModBlocks;
 import mod.encherbs.init.ModItems;
+import mod.encherbs.init.ModParticles;
 import mod.encherbs.init.ModTiles;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
@@ -40,6 +42,7 @@ public class Main
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModTiles.TILE_ENTITY_TYPES.register(modEventBus);
+        ModParticles.PARTICLES.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -72,6 +75,8 @@ public class Main
                     int[] cropColor = ((BlockPlant) item.getBlock()).getCropColor();
                     return Util.getIntFromColor(cropColor[0], cropColor[1], cropColor[2]);
                 }, item));
+
+        Minecraft.getInstance().particles.registerFactory(ModParticles.MAGICAL_FERTILIZER_PARTICLE.get(), new CustomParticleFactory());
     }
 
     @SuppressWarnings("unused")

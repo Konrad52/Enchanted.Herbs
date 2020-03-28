@@ -2,6 +2,7 @@ package mod.encherbs.classes;
 
 import mod.encherbs.classes.util.GrowthStages;
 import mod.encherbs.init.ModItems;
+import mod.encherbs.init.ModParticles;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -9,7 +10,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.ActionResultType;
@@ -75,7 +75,7 @@ public class BlockPlant extends Block {
 
             if (worldIn.isRemote)
                 for (int i = 0; i < 20; i++) {
-                    worldIn.addParticle(ParticleTypes.COMPOSTER,
+                    worldIn.addParticle(ModParticles.MAGICAL_FERTILIZER_PARTICLE.get(),
                             pos.getX() + (worldIn.rand.nextDouble() * 0.70f) + 0.15f,
                             pos.getY() + (worldIn.rand.nextDouble() * 0.70f) + 0.05f,
                             pos.getZ() + (worldIn.rand.nextDouble() * 0.70f) + 0.15f,
