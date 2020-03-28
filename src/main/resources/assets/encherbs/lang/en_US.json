@@ -1,0 +1,19 @@
+{
+  "block.encherbs.magical_dirt"       : "Magical Dirt"    ,
+  "block.encherbs.magical_dirt.desc1" : "\"This block is able to grow enchanted plants",
+  "block.encherbs.magical_dirt.desc2" : " on it when it's tilled into a farmland.\"",
+  "block.encherbs.magical_dirt.desc3" : "-The enchanted crops don't need water, and",
+  "block.encherbs.magical_dirt.desc4" : " you can stomp on them as much as you wish.",
+  "block.encherbs.magical_farmland"   : "Magical Farmland",
+
+  "block.encherbs.gold_plant"         : "Gold Plant Seeds",
+  "block.encherbs.diamond_plant"      : "Diamond Plant Seeds",
+  "block.encherbs.obsidian_plant"     : "Obsidian Plant Seeds",
+  "block.encherbs.quartz_plant"       : "Quartz Plant Seeds",
+  "block.encherbs.pearl_plant"        : "Ender Pearl Plant Seeds",
+
+  "item.encherbs.mortar"          : "Mortar and Pestle",
+  "item.encherbs.netherrack_dust" : "Netherrack Dust",
+
+  "itemGroup.encherbs"   : "Enchanted Herbs"
+}
