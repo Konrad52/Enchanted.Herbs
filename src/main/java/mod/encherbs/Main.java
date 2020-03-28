@@ -1,17 +1,14 @@
 package mod.encherbs;
 
+import mod.encherbs.classes.BlockItemSeed;
 import mod.encherbs.classes.BlockPlant;
 import mod.encherbs.classes.util.Util;
 import mod.encherbs.init.ModBlocks;
 import mod.encherbs.init.ModItems;
 import mod.encherbs.init.ModTiles;
-import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.client.renderer.color.IBlockColor;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ILightReader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,14 +22,13 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.annotation.Nullable;
-
 @Mod(Main.MODID)
 public class Main
 {
     public  static final String MODID  = "encherbs";
     private static final Logger LOGGER = LogManager.getLogger(Main.MODID);
 
+    @SuppressWarnings("unused")
     public Main() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
@@ -71,6 +67,14 @@ public class Main
                         }, block);
                     }
                 });
+
+        ModItems.ITEMS.getEntries().stream()
+                .map(RegistryObject::get)
+                .forEach(item -> Minecraft.getInstance().getItemColors().register((stack, index) -> {
+                    BlockPlant blockPlant = ((BlockPlant) ((BlockItemSeed)stack.getItem()).getBlock());
+                    int[] cropColor = blockPlant.getCropColor();
+                    return Util.getIntFromColor(cropColor[0], cropColor[1], cropColor[2]);
+                }, item));
     }
 
     @SuppressWarnings("unused")
