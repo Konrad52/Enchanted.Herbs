@@ -9,6 +9,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.ActionResultType;
@@ -23,14 +24,15 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.RegistryObject;
 
+@SuppressWarnings("ALL")
 public class BlockPlant extends Block {
 
     public static final EnumProperty<GrowthStages> GROWTH_PROPERTY = EnumProperty.create("stage" , GrowthStages.class);
 
     private int[] plantColor;
     private int[] cropColor;
-    private RegistryObject<Item>                      drop       = null;
-    private Item                                      dropItem   = null;
+    private RegistryObject<Item> drop       = null;
+    private Item                 dropItem   = null;
 
     private BlockPlant(int[] plantColor, int[] cropColor) {
         super(Block.Properties.create(Material.PLANTS)
@@ -67,9 +69,22 @@ public class BlockPlant extends Block {
 
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult p_225533_6_) {
-        if (player.getHeldItem(handIn).getItem().equals(ModItems.NETHERRACK_DUST.get())) {
-            player.getHeldItem(handIn).shrink(1);
-            worldIn.playSound(player, pos, SoundType.PLANT.getPlaceSound(), SoundCategory.BLOCKS, 1.0f, worldIn.rand.nextFloat() * 0.1F + 0.9F);
+        if (!state.get(GROWTH_PROPERTY).equals(GrowthStages.produce2) && player.getHeldItem(handIn).getItem().equals(ModItems.MAGICAL_FERTILIZER.get())) {
+            if (!player.isCreative())
+                player.getHeldItem(handIn).shrink(1);
+
+            if (worldIn.isRemote)
+                for (int i = 0; i < 20; i++) {
+                    worldIn.addParticle(ParticleTypes.COMPOSTER,
+                            pos.getX() + (worldIn.rand.nextDouble() * 0.70f) + 0.15f,
+                            pos.getY() + (worldIn.rand.nextDouble() * 0.70f) + 0.05f,
+                            pos.getZ() + (worldIn.rand.nextDouble() * 0.70f) + 0.15f,
+                            0,
+                            0,
+                            0);
+                }
+
+            worldIn.playSound(player, pos, SoundType.PLANT.getPlaceSound(), SoundCategory.BLOCKS, 0.6f, worldIn.rand.nextFloat() * 0.1F + 0.9F);
             worldIn.setBlockState(pos, state.with(GROWTH_PROPERTY, state.get(GROWTH_PROPERTY).grow()));
             return ActionResultType.SUCCESS;
         }

@@ -30,14 +30,16 @@ public class ModEvents {
                 .map(RegistryObject::get)
                 .forEach(block -> {
                     if (needsItemBlock(block)) {
-                        final Item.Properties properties = new Item.Properties().group(ModItemGroups.MOD_ITEM_GROUP);
+                        final Item.Properties properties;
                         final BlockItem blockItem;
 
                         if (isItemSeed(block)) {
+                            properties = new Item.Properties().group(ModItemGroups.MOD_SEEDS_ITEM_GROUP);
                             blockItem = new BlockItemSeed(block, properties);
                             blockItem.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
                             seeds.add((BlockItemSeed) blockItem);
                         } else {
+                            properties = new Item.Properties().group(ModItemGroups.MOD_MAIN_ITEM_GROUP);
                             blockItem = new BlockItem(block, properties);
                             blockItem.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
                         }

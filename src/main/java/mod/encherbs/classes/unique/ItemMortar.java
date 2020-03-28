@@ -9,7 +9,7 @@ public class ItemMortar extends Item {
     private static final int max_damage = 228;
 
     public ItemMortar() {
-        super(new Item.Properties().group(ModItemGroups.MOD_ITEM_GROUP).defaultMaxDamage(max_damage).maxDamage(max_damage));
+        super(new Item.Properties().group(ModItemGroups.MOD_MAIN_ITEM_GROUP).defaultMaxDamage(max_damage).maxDamage(max_damage));
     }
 
     @Override

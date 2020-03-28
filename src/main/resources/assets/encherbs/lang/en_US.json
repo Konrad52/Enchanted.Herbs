@@ -12,8 +12,10 @@
   "block.encherbs.quartz_plant"       : "Quartz Plant Seeds",
   "block.encherbs.pearl_plant"        : "Ender Pearl Plant Seeds",
 
-  "item.encherbs.mortar"          : "Mortar and Pestle",
-  "item.encherbs.netherrack_dust" : "Netherrack Dust",
+  "item.encherbs.magical_fertilizer" : "Magical Fertilizer",
+  "item.encherbs.mortar"             : "Mortar and Pestle",
+  "item.encherbs.netherrack_dust"    : "Netherrack Dust",
 
-  "itemGroup.encherbs"   : "Enchanted Herbs"
+  "itemGroup.encherbs.main"  : "Enchanted Herbs",
+  "itemGroup.encherbs.seeds" : "Enchanted Plant Seeds"
 }
