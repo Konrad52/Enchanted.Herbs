@@ -2,6 +2,7 @@ package mod.encherbs;
 
 import mod.encherbs.classes.BlockPlant;
 import mod.encherbs.classes.particles.MagicalFertilizerParticle;
+import mod.encherbs.classes.particles.PlantGrowParticle;
 import mod.encherbs.classes.util.Util;
 import mod.encherbs.init.ModBlocks;
 import mod.encherbs.init.ModItems;
@@ -10,6 +11,7 @@ import mod.encherbs.init.ModTiles;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -33,6 +35,7 @@ public class Main
     public Main() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onParticleFactoryRegistryEvent);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -75,14 +78,19 @@ public class Main
                     int[] cropColor = ((BlockPlant) item.getBlock()).getCropColor();
                     return Util.getIntFromColor(cropColor[0], cropColor[1], cropColor[2]);
                 }, item));
-
-        Minecraft.getInstance().particles.registerFactory(ModParticles.MAGICAL_FERTILIZER_PARTICLE.get(), MagicalFertilizerParticle.Factory::new);
     }
 
     @SuppressWarnings("unused")
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
         LOGGER.info("Server initialization.");
+    }
+
+    @SuppressWarnings("unused")
+    @SubscribeEvent
+    public void onParticleFactoryRegistryEvent(ParticleFactoryRegisterEvent event) {
+        Minecraft.getInstance().particles.registerFactory(ModParticles.MAGICAL_FERTILIZER_PARTICLE.get(), MagicalFertilizerParticle.Factory::new);
+        Minecraft.getInstance().particles.registerFactory(ModParticles.PLANT_GROW_PARTICLE.get(),         PlantGrowParticle.Factory::new        );
     }
 
 }

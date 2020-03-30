@@ -1,15 +1,18 @@
 package mod.encherbs.classes;
 
 import mod.encherbs.classes.util.GrowthStages;
+import mod.encherbs.init.ModBlocks;
 import mod.encherbs.init.ModItems;
 import mod.encherbs.init.ModParticles;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.ActionResultType;
@@ -22,7 +25,10 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.RegistryObject;
+
+import java.util.Random;
 
 @SuppressWarnings("ALL")
 public class BlockPlant extends Block {
@@ -57,6 +63,31 @@ public class BlockPlant extends Block {
     }
 
     @Override
+    public boolean ticksRandomly(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
+        super.tick(state, worldIn, pos, rand);
+        if (!worldIn.isAreaLoaded(pos, 1)) return;
+        if (worldIn.isRemote) return;
+        if (!worldIn.getBlockState(pos.down()).getBlock().equals(ModBlocks.MAGICAL_FARMLAND.get())) {
+            worldIn.addEntity(new ItemEntity(worldIn, pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f, new ItemStack(this)));
+            worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
+        }
+        if (!state.get(GROWTH_PROPERTY).equals(GrowthStages.produce2) && worldIn.getLight(pos) >= 9) {
+            if (rand.nextInt(100) < 33) {
+                grow(state, worldIn, pos);
+            }
+        }
+    }
+
+    private void grow(BlockState state, World worldIn, BlockPos pos) {
+        worldIn.setBlockState(pos, state.with(GROWTH_PROPERTY, state.get(GROWTH_PROPERTY).grow()));
+    }
+
+    @Override
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
         if (state.get(GROWTH_PROPERTY).equals(GrowthStages.produce2))
             if (drop == null)
@@ -85,7 +116,7 @@ public class BlockPlant extends Block {
                 }
 
             worldIn.playSound(player, pos, SoundType.PLANT.getPlaceSound(), SoundCategory.BLOCKS, 0.6f, worldIn.rand.nextFloat() * 0.1F + 0.9F);
-            worldIn.setBlockState(pos, state.with(GROWTH_PROPERTY, state.get(GROWTH_PROPERTY).grow()));
+            grow(state, worldIn, pos);
             return ActionResultType.SUCCESS;
         }
 
