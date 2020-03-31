@@ -2,7 +2,7 @@ package mod.encherbs.init;
 
 import mod.encherbs.Main;
 import mod.encherbs.ModEvents;
-import mod.encherbs.classes.ModItemGroup;
+import mod.encherbs.content.util.ModItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 

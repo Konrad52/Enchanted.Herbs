@@ -22,7 +22,6 @@ public class ForgeEvents {
         if (Objects.requireNonNull(itemTooltipEvent.getItemStack().getItem().getRegistryName()).equals(ModBlocks.MAGICAL_DIRT.get().getRegistryName())) {
             String formatting = TextFormatting.DARK_GRAY.toString() + TextFormatting.ITALIC.toString();
             List<ITextComponent> toolTip = itemTooltipEvent.getToolTip();
-            toolTip.add(new StringTextComponent(""));
             toolTip.add(new StringTextComponent(formatting + I18n.format("block.encherbs.magical_dirt.desc1")));
             toolTip.add(new StringTextComponent(formatting + I18n.format("block.encherbs.magical_dirt.desc2")));
             toolTip.add(new StringTextComponent(""));

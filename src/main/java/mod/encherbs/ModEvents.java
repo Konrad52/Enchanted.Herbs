@@ -1,6 +1,6 @@
 package mod.encherbs;
 
-import mod.encherbs.classes.BlockItemSeed;
+import mod.encherbs.content.items.BlockItemSeed;
 import mod.encherbs.init.ModBlocks;
 import mod.encherbs.init.ModItemGroups;
 import net.minecraft.block.Block;

@@ -1,6 +1,6 @@
-package mod.encherbs.classes.unique;
+package mod.encherbs.content.blocks.dirt;
 
-import mod.encherbs.classes.BlockPlant;
+import mod.encherbs.content.blocks.BlockPlant;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

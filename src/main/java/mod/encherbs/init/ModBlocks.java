@@ -1,9 +1,9 @@
 package mod.encherbs.init;
 
 import mod.encherbs.Main;
-import mod.encherbs.classes.BlockPlant;
-import mod.encherbs.classes.unique.BlockMagicalDirt;
-import mod.encherbs.classes.unique.BlockMagicalFarmland;
+import mod.encherbs.content.blocks.BlockPlant;
+import mod.encherbs.content.blocks.dirt.BlockMagicalDirt;
+import mod.encherbs.content.blocks.dirt.BlockMagicalFarmland;
 import net.minecraft.block.Block;
 import net.minecraft.item.Items;
 import net.minecraftforge.fml.RegistryObject;

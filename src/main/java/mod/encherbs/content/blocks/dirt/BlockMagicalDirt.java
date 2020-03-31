@@ -1,4 +1,4 @@
-package mod.encherbs.classes.unique;
+package mod.encherbs.content.blocks.dirt;
 
 import mod.encherbs.init.ModBlocks;
 import net.minecraft.block.Block;

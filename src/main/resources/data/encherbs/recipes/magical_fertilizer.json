@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#B#",
+        "B#B",
+        "#B#"
+    ],
+    "key": {
+        "#": {
+            "item": "encherbs:netherrack_dust"
+        },
+        "B": {
+            "item": "minecraft:bone_meal"
+        }
+    },
+    "result": {
+        "item": "encherbs:magical_fertilizer",
+        "count": 4
+    }
+}

@@ -1,4 +1,4 @@
-package mod.encherbs.classes.particles;
+package mod.encherbs.content.particles;
 
 import net.minecraft.client.particle.*;
 import net.minecraft.particles.BasicParticleType;
@@ -9,12 +9,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
-public class MagicalFertilizerParticle extends SpriteTexturedParticle {
+public class PlantGrowParticle extends SpriteTexturedParticle {
     protected final IAnimatedSprite animatedSprite;
 
-    public MagicalFertilizerParticle(IAnimatedSprite animatedSprite, World worldIn, double x, double y, double z, float r, float g, float b) {
+    public PlantGrowParticle(IAnimatedSprite animatedSprite, World worldIn, double x, double y, double z, float r, float g, float b) {
         super(worldIn, x, y, z);
-        this.particleScale = ((float)(Math.random() * 0.3f) + 0.3f) * 0.25f;
+        this.particleScale = ((float)(Math.random() * 0.3f) + 0.3f) * 1.5f;
         this.particleRed = r / 255f;
         this.particleGreen = g / 255f;
         this.particleBlue = b / 255f;
@@ -51,7 +51,7 @@ public class MagicalFertilizerParticle extends SpriteTexturedParticle {
         @Nullable
         @Override
         public Particle makeParticle(BasicParticleType typeIn, World worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            return new MagicalFertilizerParticle(this.animatedSprite, worldIn, x, y, z, (float)xSpeed, (float)ySpeed, (float)zSpeed);
+            return new PlantGrowParticle(this.animatedSprite, worldIn, x, y, z, (float)xSpeed, (float)ySpeed, (float)zSpeed);
         }
 
     }

@@ -1,0 +1,107 @@
+{
+	"__comment": "Készítette Kiss Konrád Soma, 2019-ben.",
+	"textures": {
+		"particle": "items/guide_book",
+		"texture": "items/guide_book"
+	},
+	"elements": [ 	 
+		{
+			"__comment": "Box1",
+			"from": [ 2, 0, 0 ],
+			"to": [ 14, 1, 16 ],
+			"faces": {
+				"down": { "uv": [ 1.5, 0, 7.5, 8 ], "texture": "#texture" },
+				"up": { "uv": [ 1.5, 0, 7.5, 8 ], "texture": "#texture" },
+				"north": { "uv": [ 1.5, 0, 7.5, 0.5 ], "texture": "#texture" },
+				"south": { "uv": [ 1.5, 0, 7.5, 0.5 ], "texture": "#texture" },
+				"west": { "uv": [ 0, 0, 0.5, 8 ], "texture": "#texture", "rotation": 270 },
+				"east": { "uv": [ 7.5, 0, 8, 8 ], "texture": "#texture", "rotation": 270 }
+			}
+		},
+		{
+			"__comment": "Box2",
+			"from": [ 3, 1, 0.5 ],
+			"to": [ 13.5, 2, 15.5 ],
+			"faces": {
+				"down": { "uv": [ 8, 0, 13, 8 ], "texture": "#texture" },
+				"up": { "uv": [ 8, 0, 13, 8 ], "texture": "#texture" },
+				"north": { "uv": [ 8, 0, 13, 0.5 ], "texture": "#texture" },
+				"south": { "uv": [ 8, 0, 13, 0.5 ], "texture": "#texture" },
+				"west": { "uv": [ 8, 0, 8.5, 8 ], "texture": "#texture", "rotation": 90 },
+				"east": { "uv": [ 8, 0, 8.5, 8 ], "texture": "#texture", "rotation": 90 }
+			}
+		},
+		{
+			"__comment": "Box3",
+			"from": [ 2, 1, 0 ],
+			"to": [ 3, 3, 16 ],
+			"faces": {
+				"down": { "uv": [ 1.5, 0, 2, 8 ], "texture": "#texture" },
+				"up": { "uv": [ 1.5, 0, 2, 8 ], "texture": "#texture" },
+				"north": { "uv": [ 1.5, 7, 2, 8 ], "texture": "#texture" },
+				"south": { "uv": [ 1.5, 7, 2, 8 ], "texture": "#texture" },
+				"west": { "uv": [ 0.5, 0, 1.5, 8 ], "texture": "#texture", "rotation": 270 },
+				"east": { "uv": [ 0.5, 0, 1.5, 8 ], "texture": "#texture", "rotation": 90 }
+			}
+		},
+		{
+			"__comment": "Box4",
+			"from": [ 3, 2, 0 ],
+			"to": [ 14, 3, 16 ],
+			"faces": {
+				"down": { "uv": [ 2, 0, 7.5, 8 ], "texture": "#texture" },
+				"up": { "uv": [ 2, 0, 7.5, 8 ], "texture": "#texture" },
+				"north": { "uv": [ 2, 0, 7.5, 0.5 ], "texture": "#texture" },
+				"south": { "uv": [ 2, 0, 7.5, 0.5 ], "texture": "#texture" },
+				"west": { "uv": [ 7.5, 0, 8, 8 ], "texture": "#texture", "rotation": 90 },
+				"east": { "uv": [ 7.5, 0, 8, 8 ], "texture": "#texture", "rotation": 90 }
+			}
+		},
+		{
+			"__comment": "PlaneY5",
+			"from": [ 4, 3, 2 ],
+			"to": [ 12, 3.001, 7 ],
+			"faces": {
+				"down": { "uv": [ 0.5, 8.5, 4.5, 11 ], "texture": "#texture" },
+				"up": { "uv": [ 0.5, 8.5, 4.5, 11 ], "texture": "#texture" }
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation":  [ 117, -19, 31 ],
+			"translation":  [ -1, 2, 3 ],
+			"scale":  [ 0.375, 0.375, 0.375 ]
+		},
+		"thirdperson_lefthand": {
+			"rotation":  [ 117, -19, 31 ],
+			"translation":  [ -1, 2, 3 ],
+			"scale":  [ 0.375, 0.375, 0.375 ]
+		},
+		"firstperson_righthand": {
+			"rotation":  [ 90, 5, 20 ],
+			"scale":  [ 0.4, 0.4, 0.4 ]
+		},
+		"firstperson_lefthand": {
+			"rotation":  [ 90, 5, 20 ],
+			"scale":  [ 0.4, 0.4, 0.4 ]
+		},
+		"gui": {
+			"rotation":  [ 45, -45, 0 ],
+			"translation":  [ 0, 2.5, 0 ],
+			"scale":  [ 0.625, 0.625, 0.625 ]
+		},
+		"head": {
+			"translation":  [ 0, 14.5, 0 ]
+		},
+		"ground": {
+			"translation":  [ 0, 2, 0 ],
+			"scale":  [ 0.5, 0.5, 0.5 ]
+		},
+		"fixed": {
+			"rotation":  [ 90, 0, 180 ],
+			"translation":  [ 0, 0, -2 ],
+			"scale":  [ 0.5, 0.5, 0.5 ]
+		}
+	}
+}

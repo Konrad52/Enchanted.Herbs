@@ -1,4 +1,4 @@
-package mod.encherbs.classes.util;
+package mod.encherbs.content.util;
 
 import net.minecraft.util.IStringSerializable;
 

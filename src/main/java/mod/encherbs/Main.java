@@ -1,9 +1,9 @@
 package mod.encherbs;
 
-import mod.encherbs.classes.BlockPlant;
-import mod.encherbs.classes.particles.MagicalFertilizerParticle;
-import mod.encherbs.classes.particles.PlantGrowParticle;
-import mod.encherbs.classes.util.Util;
+import mod.encherbs.content.blocks.BlockPlant;
+import mod.encherbs.content.particles.MagicalFertilizerParticle;
+import mod.encherbs.content.particles.PlantGrowParticle;
+import mod.encherbs.content.util.Util;
 import mod.encherbs.init.ModBlocks;
 import mod.encherbs.init.ModItems;
 import mod.encherbs.init.ModParticles;
@@ -28,8 +28,8 @@ import org.apache.logging.log4j.Logger;
 @Mod(Main.MODID)
 public class Main
 {
-    public  static final String MODID  = "encherbs";
-    private static final Logger LOGGER = LogManager.getLogger(Main.MODID);
+    public static final String MODID  = "encherbs";
+    public static final Logger LOGGER = LogManager.getLogger(Main.MODID);
 
     @SuppressWarnings("unused")
     public Main() {

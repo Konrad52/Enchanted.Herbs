@@ -1,6 +1,6 @@
-package mod.encherbs.classes;
+package mod.encherbs.content.blocks;
 
-import mod.encherbs.classes.util.GrowthStages;
+import mod.encherbs.content.util.GrowthStages;
 import mod.encherbs.init.ModBlocks;
 import mod.encherbs.init.ModItems;
 import mod.encherbs.init.ModParticles;

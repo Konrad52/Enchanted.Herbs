@@ -1,4 +1,4 @@
-package mod.encherbs.classes.unique;
+package mod.encherbs.content.items;
 
 import mod.encherbs.init.ModItemGroups;
 import net.minecraft.item.Item;

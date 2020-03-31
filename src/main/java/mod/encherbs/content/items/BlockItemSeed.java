@@ -1,4 +1,4 @@
-package mod.encherbs.classes;
+package mod.encherbs.content.items;
 
 import mod.encherbs.init.ModBlocks;
 import net.minecraft.block.Block;

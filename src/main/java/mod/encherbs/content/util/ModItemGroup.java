@@ -1,4 +1,4 @@
-package mod.encherbs.classes;
+package mod.encherbs.content.util;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
